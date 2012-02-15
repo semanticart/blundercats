@@ -1,0 +1,23 @@
+%style{:type=>'text/css'}
+  :sass
+    .image-list
+      list-style-type: none
+    .pager
+      ul
+        list-style-type: none
+      li
+        display: inline
+
+%h1 Images
+
+%ul.image-list
+  - @images.each do |image|
+    %li
+      %a{:href => "/#{@list.creator}/lists/#{@list.slug}/images/#{image.id}/destroy"}==[x]
+      %img{:src => image.imgur_url}
+
+= @images.pager.to_html(request.path_info)
+
+%a{:href => "/#{@list.creator}/lists/#{@list.slug}/images/fail"} Images
+= " | "
+%a{:href => "/logout"} logout
