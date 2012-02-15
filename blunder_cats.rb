@@ -88,7 +88,7 @@ class BlunderCats < Sinatra::Base
     image = Image.get(params[:id])
     kind = image.kind
     image.destroy
-    redirect "/#{ params[:user] }/lists/#{ params[:list] }/images/#{ kind }"
+    redirect request.referrer
   end
 
   post '/:user/lists/:list/images/:kind' do
