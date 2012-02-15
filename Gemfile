@@ -15,6 +15,7 @@ gem 'dm-postgres-adapter'
 gem 'dm-migrations'
 gem 'dm-validations'
 gem 'dm-timestamps'
+gem 'dm-pager'
 
 gem 'pg'
 
