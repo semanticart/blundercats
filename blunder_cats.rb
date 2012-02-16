@@ -91,7 +91,7 @@ class BlunderCats < Sinatra::Base
     redirect request.referrer
   end
 
-  post '/:user/lists/:list/images/:kind' do
+  post '/:user/lists/:list/images' do
     require_list_permissions
     Image.create(
       :list_slug => params[:list],
