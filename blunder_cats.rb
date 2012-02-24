@@ -84,11 +84,11 @@ class BlunderCats < Sinatra::Base
     haml :list_images
   end
 
-  get '/:user/lists/:list/images/:id/destroy' do
+  delete '/:user/lists/:list/images/:id/destroy' do
     image = Image.get(params[:id])
     kind = image.kind
     image.destroy
-    redirect request.referrer
+    status 200
   end
 
   post '/:user/lists/:list/images' do
