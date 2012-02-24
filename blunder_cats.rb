@@ -84,7 +84,7 @@ class BlunderCats < Sinatra::Base
     haml :list_images
   end
 
-  delete '/:user/lists/:list/images/:id/destroy' do
+  delete '/:user/lists/:list/images/:id' do
     image = Image.get(params[:id])
     kind = image.kind
     image.destroy

@@ -33,7 +33,7 @@
   %ul.image-list
     - @images.each do |image|
       %li
-        %a.delete{:href => "/#{@list.creator}/lists/#{@list.slug}/images/#{image.id}/destroy"}==[&times;]
+        %a.delete{:href => "/#{@list.creator}/lists/#{@list.slug}/images/#{image.id}"}==[&times;]
         %img{:src => image.imgur_url}
 
   = @images.pager.to_html(request.path_info)
