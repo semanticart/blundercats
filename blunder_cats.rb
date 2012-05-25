@@ -75,6 +75,22 @@ class BlunderCats < Sinatra::Base
     end
   end
 
+  get '/:user/lists/:list/images/:kind' do
+    require_list_permissions
+    @list = List.get(params[:user], params[:list])
+
+    kind = params[:kind] || 'fail'
+    @images = Image.all(:kind => kind).page(params[:page], :per_page => 10)
+    haml :list_images
+  end
+
+  delete '/:user/lists/:list/images/:id' do
+    image = Image.get(params[:id])
+    kind = image.kind
+    image.destroy
+    status 200
+  end
+
   post '/:user/lists/:list/images' do
     require_list_permissions
     Image.create(
